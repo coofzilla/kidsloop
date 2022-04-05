@@ -1,5 +1,11 @@
+import { Outlet } from "react-router-dom";
+import Container from "@mui/material/Container";
 const App = () => {
-  return <h1>App</h1>;
+  return (
+    <Container maxWidth="lg">
+      <Outlet />
+    </Container>
+  );
 };
 
 export default App;
