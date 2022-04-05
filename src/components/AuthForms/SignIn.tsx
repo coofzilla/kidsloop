@@ -1,18 +1,29 @@
+import { useState } from "react";
 import { Container } from "@mui/material";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import Logo from "kidsloop_min_logo.svg";
 import styles from "components/AuthForms/SignIn.module.css";
-import { fontSize } from "@mui/system";
 
 interface AuthFormProps {
   header: string;
 }
 
 const AuthForm = ({ header }: AuthFormProps) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   return (
-    <Container className={styles.auth_container}>
+    <Container
+      sx={{
+        borderRadius: "12px",
+        boxShadow: 10,
+        padding: "24px",
+        maxWidth: "320px",
+      }}
+      maxWidth={false}
+    >
       <Box
         sx={{
           display: "flex",
@@ -28,24 +39,41 @@ const AuthForm = ({ header }: AuthFormProps) => {
         </Typography>
         <Box component="form">
           <TextField
-            className={styles.email_field}
+            sx={{
+              marginTop: "12px",
+              marginBottom: "12px",
+            }}
+            InputProps={{
+              style: {
+                borderRadius: "12px",
+              },
+            }}
             required
             fullWidth
-            id="email"
             label="Email or Phone"
             name="email"
             autoComplete="email"
             autoFocus
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
           <TextField
-            className={styles.password_field}
+            sx={{
+              marginBottom: "12px",
+            }}
+            InputProps={{
+              style: {
+                borderRadius: "12px",
+              },
+            }}
             required
             fullWidth
             name="password"
             label="Password"
             type="password"
-            id="password"
             autoComplete="current-password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </Box>
       </Box>

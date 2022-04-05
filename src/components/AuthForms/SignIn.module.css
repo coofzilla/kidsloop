@@ -1,23 +1,4 @@
-.auth_container {
-  border-radius: 12px;
-  box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.1);
-  padding: 24px;
-  max-width: 320px;
-}
-
 .logo {
   height: 5rem;
   margin-bottom: 12px;
-}
-
-.email_field {
-  margin-top: 12px;
-  margin-bottom: 12px;
-}
-
-.password_field {
-  margin-bottom: 12px;
-}
-.text_field {
-  font-size: 16px;
 }

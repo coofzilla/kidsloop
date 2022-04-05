@@ -1,4 +1,4 @@
-import * as ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from "components/App";
 import AuthForm from "components/AuthForms/SignIn";
@@ -8,11 +8,13 @@ const Root = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}>
-          <Route path="login" element={<AuthForm header="Sign In"/>} />
+          <Route path="login" element={<AuthForm header="Sign In" />} />
         </Route>
       </Routes>
     </BrowserRouter>
   );
 };
 
-ReactDOM.render(<Root />, document.getElementById("root"));
+const container = document.getElementById("root")!;
+const root = createRoot(container);
+root.render(<Root />);
