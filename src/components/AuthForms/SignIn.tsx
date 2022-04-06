@@ -18,11 +18,12 @@ import styles from "components/AuthForms/SignIn.module.css";
 
 interface AuthFormProps {
   header: string;
-  switchTheme: any;
-  theme: any;
+  switchTheme: () => void;
+  theme: string;
 }
 
 const AuthForm = ({ header, switchTheme, theme }: AuthFormProps) => {
+  console.log(switchTheme);
   const [emailOrPhone, setEmailOrPhone] = useState("");
   const [password, setPassword] = useState("");
   const [emailPhoneError, setEmailPhoneError] = useState(false);
