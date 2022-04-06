@@ -9,9 +9,10 @@ const Card = ({ children }: CardProps) => {
     <Container
       sx={{
         borderRadius: "12px",
-        boxShadow: 10,
         padding: "24px",
         maxWidth: "320px",
+        boxShadow: "0px 0px 20px 5px var(--cardShadow)",
+        background: "var(--card)"
       }}
       maxWidth={false}
     >

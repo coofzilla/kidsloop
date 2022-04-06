@@ -1,6 +1,5 @@
 import { SetStateAction, useState } from "react";
 import { Link } from "react-router-dom";
-
 import kidsloop from "api/kidsloop";
 
 import isPhoneNumber from "utils/validate-number";
@@ -69,7 +68,11 @@ const AuthForm = ({ header }: AuthFormProps) => {
         <Container disableGutters>
           <img src={Logo} alt="logo" className={styles.logo} />
         </Container>
-        <Typography variant="h3" align="left" style={{ fontSize: "36px" }}>
+        <Typography
+          variant="h3"
+          align="left"
+          style={{ fontSize: "36px", color: "var(--text)" }}
+        >
           {header}
         </Typography>
         <Box component="form">
@@ -77,10 +80,20 @@ const AuthForm = ({ header }: AuthFormProps) => {
             sx={{
               marginTop: "12px",
               marginBottom: "12px",
+              "& .MuiOutlinedInput-input": {
+                color: "var(--text)",
+              },
+              "& .MuiOutlinedInput-notchedOutline": {
+                borderColor: "var(--inputBorder)",
+              },
+              "& .MuiInputLabel-root": {
+                color: "var(--labelText)",
+              },
             }}
             InputProps={{
               style: {
                 borderRadius: "12px",
+                color: "red",
               },
             }}
             size="small"
@@ -100,6 +113,15 @@ const AuthForm = ({ header }: AuthFormProps) => {
           <TextField
             sx={{
               marginBottom: "12px",
+              "& .MuiOutlinedInput-notchedOutline": {
+                borderColor: "var(--inputBorder)",
+              },
+              "& .MuiInputLabel-root": {
+                color: "var(--labelText)",
+              },
+              "& .MuiOutlinedInput-input": {
+                color: "var(--text)",
+              },
             }}
             InputProps={{
               style: {
@@ -134,7 +156,7 @@ const AuthForm = ({ header }: AuthFormProps) => {
           ) : (
             <Button
               sx={{
-                borderRadius: 4,
+                borderRadius: "12px",
                 textTransform: "none",
               }}
               variant="contained"
