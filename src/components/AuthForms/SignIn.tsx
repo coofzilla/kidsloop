@@ -49,7 +49,7 @@ const AuthForm = ({ header, switchTheme, theme }: AuthFormProps) => {
     setPasswordError(password.length < 5);
   };
 
-  const onSubmitHandler = async (e: any) => {
+  const onSubmitHandler = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     if (emailPhoneError || passwordError) return;
     setIsLoading(true);
