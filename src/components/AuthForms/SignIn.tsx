@@ -1,4 +1,6 @@
 import { SetStateAction, useState } from "react";
+import { useContext } from "react";
+import LanguageContext from "contexts/LanguageContext";
 import { Link } from "react-router-dom";
 import kidsloop from "api/kidsloop";
 
@@ -23,6 +25,7 @@ interface AuthFormProps {
 }
 
 const AuthForm = ({ header, switchTheme, theme }: AuthFormProps) => {
+  const { language, onLanguageChange } = useContext(LanguageContext);
 
   const [emailOrPhone, setEmailOrPhone] = useState("");
   const [password, setPassword] = useState("");
@@ -78,7 +81,7 @@ const AuthForm = ({ header, switchTheme, theme }: AuthFormProps) => {
             align="left"
             style={{ fontSize: "36px", color: "var(--text)" }}
           >
-            {header}
+            {language === "한국어" ? "로그인" : "Sign In"}
           </Typography>
           <Box component="form">
             <TextField
@@ -104,7 +107,9 @@ const AuthForm = ({ header, switchTheme, theme }: AuthFormProps) => {
               size="small"
               required
               fullWidth
-              label="Email or Phone"
+              label={
+                language === "한국어" ? "이메일 또는 전화" : "Email or Phone"
+              }
               name="email"
               autoComplete="email"
               autoFocus
@@ -113,7 +118,9 @@ const AuthForm = ({ header, switchTheme, theme }: AuthFormProps) => {
               error={emailPhoneError ? true : false}
               helperText={
                 emailPhoneError
-                  ? "Please enter valid email or phone number"
+                  ? language === "한국어"
+                    ? "사용가능한 이메일 주소를 입력해 주세요"
+                    : "enter a valid email or phone number"
                   : ""
               }
             />
@@ -139,7 +146,7 @@ const AuthForm = ({ header, switchTheme, theme }: AuthFormProps) => {
               required
               fullWidth
               name="password"
-              label="Password"
+              label={language === "한국어" ? "패스워드" : "Password"}
               type="password"
               autoComplete="current-password"
               value={password}
@@ -156,7 +163,9 @@ const AuthForm = ({ header, switchTheme, theme }: AuthFormProps) => {
             alignItems="center"
           >
             <Link className={styles.link} to="/forgot-password">
-              Forgot your password?
+              {language === "한국어"
+                ? "비밀번호를 잊으셨나요?"
+                : "Forgot your password?"}
             </Link>
             {isLoading ? (
               <CircularProgress size={36.5} />
@@ -169,12 +178,12 @@ const AuthForm = ({ header, switchTheme, theme }: AuthFormProps) => {
                 variant="contained"
                 onClick={onSubmitHandler}
               >
-                Sign In
+                {language === "한국어" ? "로그인" : "Sign In"}
               </Button>
             )}
           </Stack>
           <Link className={styles.link} to="signup">
-            Create an account
+            {language === "한국어" ? "가입하기" : "Create an account"}
           </Link>
         </Box>
       </Card>
