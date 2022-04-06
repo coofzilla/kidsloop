@@ -1,8 +1,6 @@
-import { useState } from "react";
 import { useContext } from "react";
 import LanguageContext from "contexts/LanguageContext";
 import { Link } from "react-router-dom";
-import kidsloop from "api/kidsloop";
 import Footer from "components/Footer/Footer";
 import { Container } from "@mui/material";
 import Stack from "@mui/material/Stack";
@@ -23,7 +21,6 @@ interface AuthFormProps {
 
 const AuthForm = ({ switchTheme, theme }: AuthFormProps) => {
   const { language } = useContext(LanguageContext);
-  const [isLoading, setIsLoading] = useState(false);
   const [
     emailChangeHandler,
     passwordChangeHandler,
@@ -31,19 +28,10 @@ const AuthForm = ({ switchTheme, theme }: AuthFormProps) => {
     password,
     emailPhoneError,
     passwordError,
+    isLoading,
+    onSubmitHandler,
   ] = useAuthHandlers();
 
-  const onSubmitHandler = async (e: { preventDefault: () => void }) => {
-    e.preventDefault();
-    if (emailPhoneError || passwordError) return;
-    setIsLoading(true);
-    const { data } = await kidsloop.patch("/sign-in", {
-      emailOrPhone,
-      password,
-    });
-    setIsLoading(false);
-    console.log(`Welcome, ${data.name}`);
-  };
   return (
     <div className={styles.content_wrapper}>
       <Card>

@@ -1,4 +1,5 @@
 import { useState, SetStateAction } from "react";
+import kidsloop from "api/kidsloop";
 
 import isPhoneNumber from "utils/validate-number";
 import isEmail from "utils/validate-email";
@@ -28,6 +29,21 @@ const useAuthHandlers = () => {
     setPasswordError(password.length < 5);
   };
 
+  const [isLoading, setIsLoading] = useState(false);
+
+  const onSubmitHandler = async (e: any) => {
+    e.preventDefault();
+    if (!password.length || !emailOrPhone.length) return;
+    if (emailPhoneError || passwordError) return;
+    setIsLoading(true);
+    const { data } = await kidsloop.patch("/sign-in", {
+      emailOrPhone,
+      password,
+    });
+    setIsLoading(false);
+    console.log(`Welcome, ${data.name}`);
+  };
+
   return [
     emailChangeHandler,
     passwordChangeHandler,
@@ -35,7 +51,9 @@ const useAuthHandlers = () => {
     password,
     emailPhoneError,
     passwordError,
-  ];
+    isLoading,
+    onSubmitHandler,
+  ] as const;
 };
 
 export default useAuthHandlers;
