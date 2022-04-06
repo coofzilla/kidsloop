@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useContext } from "react";
+import LanguageContext from "contexts/LanguageContext";
 import IconButton from "@mui/material/IconButton";
 import Link from "@mui/material/Link";
-
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
 import MenuItem from "@mui/material/MenuItem";
@@ -17,11 +17,10 @@ interface FooterProps {
 }
 
 const Footer = ({ switchTheme, theme }: FooterProps) => {
-  const [language, setLanguage] = useState("");
+  const { language, onLanguageChange } = useContext(LanguageContext);
 
   const handleChange = (e: SelectChangeEvent) => {
-    setLanguage(e.target.value as string);
-    console.log(language);
+    onLanguageChange(e.target.value as string);
   };
   return (
     <div className={styles.footer}>
@@ -45,7 +44,7 @@ const Footer = ({ switchTheme, theme }: FooterProps) => {
             color: "var(--secondary)",
           }}
         >
-          Select Language
+          {language === "한국어" ? "언어 선택" : "Select Language"}
         </InputLabel>
         <Select
           IconComponent={() => null}
@@ -68,7 +67,7 @@ const Footer = ({ switchTheme, theme }: FooterProps) => {
         }}
         underline="none"
       >
-        Help
+        {language === "한국어" ? "도움" : "Help"}
       </Link>
       <Link
         underline="none"
@@ -78,7 +77,7 @@ const Footer = ({ switchTheme, theme }: FooterProps) => {
           cursor: "pointer",
         }}
       >
-        Privacy
+        {language === "한국어" ? "프라이버시" : "Privacy"}
       </Link>
       <Link
         underline="none"
@@ -88,7 +87,7 @@ const Footer = ({ switchTheme, theme }: FooterProps) => {
           cursor: "pointer",
         }}
       >
-        Terms
+        {language === "English" ? "Terms" : "조건"}
       </Link>
     </div>
   );

@@ -19,6 +19,10 @@
   --inputBorder: rgba(255, 255, 255, 0.25);
   --cardShadow: rgba(255, 255, 255, 0.1);
 }
+* {
+  font-family: "Quicksand", sans-serif !important;
+}
+
 body {
   margin: 0;
 }

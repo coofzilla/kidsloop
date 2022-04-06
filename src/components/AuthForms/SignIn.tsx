@@ -23,7 +23,7 @@ interface AuthFormProps {
 }
 
 const AuthForm = ({ header, switchTheme, theme }: AuthFormProps) => {
-  console.log(switchTheme);
+
   const [emailOrPhone, setEmailOrPhone] = useState("");
   const [password, setPassword] = useState("");
   const [emailPhoneError, setEmailPhoneError] = useState(false);

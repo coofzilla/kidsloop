@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
 import Container from "@mui/material/Container";
+import { LanguageStore } from "contexts/LanguageContext";
 
 const App = ({ theme }: any) => {
   return (
@@ -13,7 +14,9 @@ const App = ({ theme }: any) => {
         flexDirection: "column",
       }}
     >
-      <Outlet />
+      <LanguageStore>
+        <Outlet />
+      </LanguageStore>
     </Container>
   );
 };
