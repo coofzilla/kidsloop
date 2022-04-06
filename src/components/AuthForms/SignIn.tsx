@@ -1,5 +1,8 @@
-import { useState } from "react";
+import { SetStateAction, useState } from "react";
 import { Container } from "@mui/material";
+import isPhoneNumber from "utils/validate-number";
+import isEmail from "utils/validate-email";
+
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
@@ -11,8 +14,29 @@ interface AuthFormProps {
 }
 
 const AuthForm = ({ header }: AuthFormProps) => {
-  const [email, setEmail] = useState("");
+  const [emailOrPhone, setEmailOrPhone] = useState("");
   const [password, setPassword] = useState("");
+  const [emailPhoneError, setEmailPhoneError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
+  //move all of the state logic and handlers into a custom hook
+  const emailChangeHandler = (e: {
+    target: { value: SetStateAction<string> };
+  }) => {
+    setEmailOrPhone(e.target.value);
+    if (!isPhoneNumber(emailOrPhone) || !isEmail(emailOrPhone)) {
+      setEmailPhoneError(true);
+    }
+    if (isPhoneNumber(emailOrPhone) || isEmail(emailOrPhone)) {
+      setEmailPhoneError(false);
+    }
+  };
+  //figure out why not switching error flag when deleting only a few numbers
+  const passwordChangeHandler = (e: {
+    target: { value: SetStateAction<string> };
+  }) => {
+    setPassword(e.target.value);
+    setPasswordError(password.length < 5);
+  };
 
   return (
     <Container
@@ -54,8 +78,12 @@ const AuthForm = ({ header }: AuthFormProps) => {
             name="email"
             autoComplete="email"
             autoFocus
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            value={emailOrPhone}
+            onChange={emailChangeHandler}
+            error={emailPhoneError ? true : false}
+            helperText={
+              emailPhoneError ? "Please enter valid email or phone number" : ""
+            }
           />
           <TextField
             sx={{
@@ -73,7 +101,8 @@ const AuthForm = ({ header }: AuthFormProps) => {
             type="password"
             autoComplete="current-password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={passwordChangeHandler}
+            error={passwordError ? true : false}
           />
         </Box>
       </Box>
