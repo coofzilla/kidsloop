@@ -67,7 +67,7 @@ const Footer = ({ switchTheme, theme }: FooterProps) => {
         }}
         underline="none"
       >
-        {language === "한국어" ? "도움" : "Help"}
+        {language === "한국어" ? "도움말" : "Help"}
       </Link>
       <Link
         underline="none"
@@ -77,7 +77,7 @@ const Footer = ({ switchTheme, theme }: FooterProps) => {
           cursor: "pointer",
         }}
       >
-        {language === "한국어" ? "프라이버시" : "Privacy"}
+        {language === "한국어" ? "개인정보" : "Privacy"}
       </Link>
       <Link
         underline="none"
@@ -87,7 +87,7 @@ const Footer = ({ switchTheme, theme }: FooterProps) => {
           cursor: "pointer",
         }}
       >
-        {language === "English" ? "Terms" : "조건"}
+        {language === "한국어" ? "약관" : "Terms"}
       </Link>
     </div>
   );

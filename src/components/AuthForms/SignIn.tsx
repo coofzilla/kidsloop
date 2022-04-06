@@ -1,22 +1,20 @@
-import { SetStateAction, useState } from "react";
+import { useState } from "react";
 import { useContext } from "react";
 import LanguageContext from "contexts/LanguageContext";
 import { Link } from "react-router-dom";
 import kidsloop from "api/kidsloop";
-
-import isPhoneNumber from "utils/validate-number";
-import isEmail from "utils/validate-email";
 import Footer from "components/Footer/Footer";
 import { Container } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import Card from "components/AuthContainer/Card";
 import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import { CircularProgress } from "@mui/material";
 import Logo from "kidsloop_min_logo.svg";
 import styles from "components/AuthForms/SignIn.module.css";
+import TextFields from "components/TextFields/TextFields";
+import useAuthHandlers from "hooks/useAuthHandlers";
 
 interface AuthFormProps {
   switchTheme: () => void;
@@ -25,31 +23,15 @@ interface AuthFormProps {
 
 const AuthForm = ({ switchTheme, theme }: AuthFormProps) => {
   const { language } = useContext(LanguageContext);
-
-  const [emailOrPhone, setEmailOrPhone] = useState("");
-  const [password, setPassword] = useState("");
-  const [emailPhoneError, setEmailPhoneError] = useState(false);
-  const [passwordError, setPasswordError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  //move all of the state logic and handlers into a custom hook
-  const emailChangeHandler = (e: {
-    target: { value: SetStateAction<string> };
-  }) => {
-    setEmailOrPhone(e.target.value);
-    if (!isPhoneNumber(emailOrPhone) || !isEmail(emailOrPhone)) {
-      setEmailPhoneError(true);
-    }
-    if (isPhoneNumber(emailOrPhone) || isEmail(emailOrPhone)) {
-      setEmailPhoneError(false);
-    }
-  };
-  //figure out why not switching error flag when deleting only a few numbers
-  const passwordChangeHandler = (e: {
-    target: { value: SetStateAction<string> };
-  }) => {
-    setPassword(e.target.value);
-    setPasswordError(password.length < 5);
-  };
+  const [
+    emailChangeHandler,
+    passwordChangeHandler,
+    emailOrPhone,
+    password,
+    emailPhoneError,
+    passwordError,
+  ] = useAuthHandlers();
 
   const onSubmitHandler = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
@@ -62,7 +44,6 @@ const AuthForm = ({ switchTheme, theme }: AuthFormProps) => {
     setIsLoading(false);
     console.log(`Welcome, ${data.name}`);
   };
-
   return (
     <div className={styles.content_wrapper}>
       <Card>
@@ -83,74 +64,14 @@ const AuthForm = ({ switchTheme, theme }: AuthFormProps) => {
             {language === "한국어" ? "로그인" : "Sign In"}
           </Typography>
           <Box component="form">
-            <TextField
-              sx={{
-                marginTop: "12px",
-                marginBottom: "12px",
-                "& .MuiOutlinedInput-input": {
-                  color: "var(--text)",
-                },
-                "& .MuiOutlinedInput-notchedOutline": {
-                  borderColor: "var(--inputBorder)",
-                },
-                "& .MuiInputLabel-root": {
-                  color: "var(--labelText)",
-                },
-              }}
-              InputProps={{
-                style: {
-                  borderRadius: "12px",
-                  color: "red",
-                },
-              }}
-              size="small"
-              required
-              fullWidth
-              label={
-                language === "한국어" ? "이메일 또는 전화" : "Email or Phone"
-              }
-              name="email"
-              autoComplete="email"
-              autoFocus
-              value={emailOrPhone}
-              onChange={emailChangeHandler}
-              error={emailPhoneError ? true : false}
-              helperText={
-                emailPhoneError
-                  ? language === "한국어"
-                    ? "사용가능한 이메일 주소를 입력해 주세요"
-                    : "enter a valid email or phone number"
-                  : ""
-              }
-            />
-            <TextField
-              sx={{
-                marginBottom: "12px",
-                "& .MuiOutlinedInput-notchedOutline": {
-                  borderColor: "var(--inputBorder)",
-                },
-                "& .MuiInputLabel-root": {
-                  color: "var(--labelText)",
-                },
-                "& .MuiOutlinedInput-input": {
-                  color: "var(--text)",
-                },
-              }}
-              InputProps={{
-                style: {
-                  borderRadius: "12px",
-                },
-              }}
-              size="small"
-              required
-              fullWidth
-              name="password"
-              label={language === "한국어" ? "패스워드" : "Password"}
-              type="password"
-              autoComplete="current-password"
-              value={password}
-              onChange={passwordChangeHandler}
-              error={passwordError ? true : false}
+            <TextFields
+              language={language}
+              emailOrPhone={emailOrPhone}
+              emailChangeHandler={emailChangeHandler}
+              emailPhoneError={emailPhoneError}
+              password={password}
+              passwordChangeHandler={passwordChangeHandler}
+              passwordError={passwordError}
             />
           </Box>
           <Stack
