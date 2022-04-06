@@ -1,15 +1,18 @@
 import { SetStateAction, useState } from "react";
 import { Link } from "react-router-dom";
+
+import kidsloop from "api/kidsloop";
+
+import isPhoneNumber from "utils/validate-number";
+import isEmail from "utils/validate-email";
 import { Container } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import Card from "components/AuthContainer/Card";
-import isPhoneNumber from "utils/validate-number";
-import isEmail from "utils/validate-email";
-
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
+import { CircularProgress } from "@mui/material";
 import Logo from "kidsloop_min_logo.svg";
 import styles from "components/AuthForms/SignIn.module.css";
 
@@ -22,6 +25,7 @@ const AuthForm = ({ header }: AuthFormProps) => {
   const [password, setPassword] = useState("");
   const [emailPhoneError, setEmailPhoneError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   //move all of the state logic and handlers into a custom hook
   const emailChangeHandler = (e: {
     target: { value: SetStateAction<string> };
@@ -40,6 +44,18 @@ const AuthForm = ({ header }: AuthFormProps) => {
   }) => {
     setPassword(e.target.value);
     setPasswordError(password.length < 5);
+  };
+
+  const onSubmitHandler = async (e: any) => {
+    e.preventDefault();
+    if (emailPhoneError || passwordError) return;
+    setIsLoading(true);
+    const { data } = await kidsloop.patch("/sign-in", {
+      emailOrPhone,
+      password,
+    });
+    setIsLoading(false);
+    console.log(`Welcome, ${data.name}`);
   };
 
   return (
@@ -113,15 +129,20 @@ const AuthForm = ({ header }: AuthFormProps) => {
           <Link className={styles.link} to="/forgot-password">
             Forgot your password?
           </Link>
-          <Button
-            sx={{
-              borderRadius: 4,
-              textTransform: "none",
-            }}
-            variant="contained"
-          >
-            Sign In
-          </Button>
+          {isLoading ? (
+            <CircularProgress size={36.5} />
+          ) : (
+            <Button
+              sx={{
+                borderRadius: 4,
+                textTransform: "none",
+              }}
+              variant="contained"
+              onClick={onSubmitHandler}
+            >
+              Sign In
+            </Button>
+          )}
         </Stack>
         <Link className={styles.link} to="signup">
           Create an account
