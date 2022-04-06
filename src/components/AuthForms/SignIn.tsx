@@ -19,13 +19,12 @@ import Logo from "kidsloop_min_logo.svg";
 import styles from "components/AuthForms/SignIn.module.css";
 
 interface AuthFormProps {
-  header: string;
   switchTheme: () => void;
   theme: string;
 }
 
-const AuthForm = ({ header, switchTheme, theme }: AuthFormProps) => {
-  const { language, onLanguageChange } = useContext(LanguageContext);
+const AuthForm = ({ switchTheme, theme }: AuthFormProps) => {
+  const { language } = useContext(LanguageContext);
 
   const [emailOrPhone, setEmailOrPhone] = useState("");
   const [password, setPassword] = useState("");

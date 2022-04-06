@@ -21,13 +21,7 @@ const Root = () => {
         <Route path="/" element={<App theme={theme} />}>
           <Route
             path="login"
-            element={
-              <AuthForm
-                header="Sign In"
-                switchTheme={switchTheme}
-                theme={theme}
-              />
-            }
+            element={<AuthForm switchTheme={switchTheme} theme={theme} />}
           />
         </Route>
       </Routes>
