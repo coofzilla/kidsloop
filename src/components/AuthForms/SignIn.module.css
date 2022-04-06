@@ -10,3 +10,8 @@
   text-decoration: none;
   color: var(--secondary);
 }
+
+.content_wrapper {
+  margin: auto;
+  width: 50%;
+}

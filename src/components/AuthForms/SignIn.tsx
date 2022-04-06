@@ -4,6 +4,7 @@ import kidsloop from "api/kidsloop";
 
 import isPhoneNumber from "utils/validate-number";
 import isEmail from "utils/validate-email";
+import Footer from "components/Footer/Footer";
 import { Container } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
@@ -17,9 +18,11 @@ import styles from "components/AuthForms/SignIn.module.css";
 
 interface AuthFormProps {
   header: string;
+  switchTheme: any;
+  theme: any;
 }
 
-const AuthForm = ({ header }: AuthFormProps) => {
+const AuthForm = ({ header, switchTheme, theme }: AuthFormProps) => {
   const [emailOrPhone, setEmailOrPhone] = useState("");
   const [password, setPassword] = useState("");
   const [emailPhoneError, setEmailPhoneError] = useState(false);
@@ -58,119 +61,124 @@ const AuthForm = ({ header }: AuthFormProps) => {
   };
 
   return (
-    <Card>
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-        }}
-      >
-        <Container disableGutters>
-          <img src={Logo} alt="logo" className={styles.logo} />
-        </Container>
-        <Typography
-          variant="h3"
-          align="left"
-          style={{ fontSize: "36px", color: "var(--text)" }}
-        >
-          {header}
-        </Typography>
-        <Box component="form">
-          <TextField
-            sx={{
-              marginTop: "12px",
-              marginBottom: "12px",
-              "& .MuiOutlinedInput-input": {
-                color: "var(--text)",
-              },
-              "& .MuiOutlinedInput-notchedOutline": {
-                borderColor: "var(--inputBorder)",
-              },
-              "& .MuiInputLabel-root": {
-                color: "var(--labelText)",
-              },
-            }}
-            InputProps={{
-              style: {
-                borderRadius: "12px",
-                color: "red",
-              },
-            }}
-            size="small"
-            required
-            fullWidth
-            label="Email or Phone"
-            name="email"
-            autoComplete="email"
-            autoFocus
-            value={emailOrPhone}
-            onChange={emailChangeHandler}
-            error={emailPhoneError ? true : false}
-            helperText={
-              emailPhoneError ? "Please enter valid email or phone number" : ""
-            }
-          />
-          <TextField
-            sx={{
-              marginBottom: "12px",
-              "& .MuiOutlinedInput-notchedOutline": {
-                borderColor: "var(--inputBorder)",
-              },
-              "& .MuiInputLabel-root": {
-                color: "var(--labelText)",
-              },
-              "& .MuiOutlinedInput-input": {
-                color: "var(--text)",
-              },
-            }}
-            InputProps={{
-              style: {
-                borderRadius: "12px",
-              },
-            }}
-            size="small"
-            required
-            fullWidth
-            name="password"
-            label="Password"
-            type="password"
-            autoComplete="current-password"
-            value={password}
-            onChange={passwordChangeHandler}
-            error={passwordError ? true : false}
-          />
-        </Box>
-        <Stack
+    <div className={styles.content_wrapper}>
+      <Card>
+        <Box
           sx={{
-            marginBottom: "12px",
+            display: "flex",
+            flexDirection: "column",
           }}
-          direction="row"
-          justifyContent="space-between"
-          alignItems="center"
         >
-          <Link className={styles.link} to="/forgot-password">
-            Forgot your password?
-          </Link>
-          {isLoading ? (
-            <CircularProgress size={36.5} />
-          ) : (
-            <Button
+          <Container disableGutters>
+            <img src={Logo} alt="logo" className={styles.logo} />
+          </Container>
+          <Typography
+            variant="h3"
+            align="left"
+            style={{ fontSize: "36px", color: "var(--text)" }}
+          >
+            {header}
+          </Typography>
+          <Box component="form">
+            <TextField
               sx={{
-                borderRadius: "12px",
-                textTransform: "none",
+                marginTop: "12px",
+                marginBottom: "12px",
+                "& .MuiOutlinedInput-input": {
+                  color: "var(--text)",
+                },
+                "& .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "var(--inputBorder)",
+                },
+                "& .MuiInputLabel-root": {
+                  color: "var(--labelText)",
+                },
               }}
-              variant="contained"
-              onClick={onSubmitHandler}
-            >
-              Sign In
-            </Button>
-          )}
-        </Stack>
-        <Link className={styles.link} to="signup">
-          Create an account
-        </Link>
-      </Box>
-    </Card>
+              InputProps={{
+                style: {
+                  borderRadius: "12px",
+                  color: "red",
+                },
+              }}
+              size="small"
+              required
+              fullWidth
+              label="Email or Phone"
+              name="email"
+              autoComplete="email"
+              autoFocus
+              value={emailOrPhone}
+              onChange={emailChangeHandler}
+              error={emailPhoneError ? true : false}
+              helperText={
+                emailPhoneError
+                  ? "Please enter valid email or phone number"
+                  : ""
+              }
+            />
+            <TextField
+              sx={{
+                marginBottom: "12px",
+                "& .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "var(--inputBorder)",
+                },
+                "& .MuiInputLabel-root": {
+                  color: "var(--labelText)",
+                },
+                "& .MuiOutlinedInput-input": {
+                  color: "var(--text)",
+                },
+              }}
+              InputProps={{
+                style: {
+                  borderRadius: "12px",
+                },
+              }}
+              size="small"
+              required
+              fullWidth
+              name="password"
+              label="Password"
+              type="password"
+              autoComplete="current-password"
+              value={password}
+              onChange={passwordChangeHandler}
+              error={passwordError ? true : false}
+            />
+          </Box>
+          <Stack
+            sx={{
+              marginBottom: "12px",
+            }}
+            direction="row"
+            justifyContent="space-between"
+            alignItems="center"
+          >
+            <Link className={styles.link} to="/forgot-password">
+              Forgot your password?
+            </Link>
+            {isLoading ? (
+              <CircularProgress size={36.5} />
+            ) : (
+              <Button
+                sx={{
+                  borderRadius: "12px",
+                  textTransform: "none",
+                }}
+                variant="contained"
+                onClick={onSubmitHandler}
+              >
+                Sign In
+              </Button>
+            )}
+          </Stack>
+          <Link className={styles.link} to="signup">
+            Create an account
+          </Link>
+        </Box>
+      </Card>
+      <Footer switchTheme={switchTheme} theme={theme} />
+    </div>
   );
 };
 

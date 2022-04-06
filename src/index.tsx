@@ -2,13 +2,33 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from "components/App";
 import AuthForm from "components/AuthForms/SignIn";
+import useLocalStorage from "use-local-storage";
 
 const Root = () => {
+  const defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const [theme, setTheme] = useLocalStorage(
+    "theme",
+    defaultDark ? "dark" : "light"
+  );
+  const switchTheme = () => {
+    const newTheme = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
+  };
+
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<App />}>
-          <Route path="login" element={<AuthForm header="Sign In" />} />
+        <Route path="/" element={<App theme={theme} />}>
+          <Route
+            path="login"
+            element={
+              <AuthForm
+                header="Sign In"
+                switchTheme={switchTheme}
+                theme={theme}
+              />
+            }
+          />
         </Route>
       </Routes>
     </BrowserRouter>

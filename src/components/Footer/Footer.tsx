@@ -1,5 +1,7 @@
 import { useState } from "react";
 import IconButton from "@mui/material/IconButton";
+import Link from "@mui/material/Link";
+
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
 import MenuItem from "@mui/material/MenuItem";
@@ -26,9 +28,13 @@ const Footer = ({ switchTheme, theme }: FooterProps) => {
       <IconButton onClick={switchTheme}>
         {theme === "dark" ? <Brightness7Icon /> : <Brightness4Icon />}
       </IconButton>
+
       <FormControl
         sx={{
           width: "125px",
+          "& .MuiOutlinedInput-notchedOutline": {
+            borderColor: "var(--inputBorder)",
+          },
         }}
         size="small"
       >
@@ -36,6 +42,7 @@ const Footer = ({ switchTheme, theme }: FooterProps) => {
           id="language"
           sx={{
             fontSize: "12px",
+            color: "var(--secondary)",
           }}
         >
           Select Language
@@ -44,6 +51,7 @@ const Footer = ({ switchTheme, theme }: FooterProps) => {
           IconComponent={() => null}
           labelId="language"
           value={language}
+          sx={{ color: "var(--text)" }}
           label="Select Language"
           onChange={handleChange}
         >
@@ -52,6 +60,36 @@ const Footer = ({ switchTheme, theme }: FooterProps) => {
           <MenuItem value=""></MenuItem>
         </Select>
       </FormControl>
+      <Link
+        sx={{
+          fontSize: "12px",
+          color: "var(--secondary)",
+          cursor: "pointer",
+        }}
+        underline="none"
+      >
+        Help
+      </Link>
+      <Link
+        underline="none"
+        sx={{
+          fontSize: "12px",
+          color: "var(--secondary)",
+          cursor: "pointer",
+        }}
+      >
+        Privacy
+      </Link>
+      <Link
+        underline="none"
+        sx={{
+          fontSize: "12px",
+          color: "var(--secondary)",
+          cursor: "pointer",
+        }}
+      >
+        Terms
+      </Link>
     </div>
   );
 };

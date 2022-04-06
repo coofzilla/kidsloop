@@ -12,7 +12,7 @@ const Card = ({ children }: CardProps) => {
         padding: "24px",
         maxWidth: "320px",
         boxShadow: "0px 0px 20px 5px var(--cardShadow)",
-        background: "var(--card)"
+        background: "var(--card)",
       }}
       maxWidth={false}
     >
