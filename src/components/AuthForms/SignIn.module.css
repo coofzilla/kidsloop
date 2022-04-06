@@ -2,3 +2,9 @@
   height: 5rem;
   margin-bottom: 12px;
 }
+
+.link {
+  font-size: 12px;
+  text-decoration: none;
+  color: #17377b;
+}

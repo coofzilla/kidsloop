@@ -1,5 +1,9 @@
 import { SetStateAction, useState } from "react";
+import { Link } from "react-router-dom";
 import { Container } from "@mui/material";
+import Stack from "@mui/material/Stack";
+import Button from "@mui/material/Button";
+import Card from "components/AuthContainer/Card";
 import isPhoneNumber from "utils/validate-number";
 import isEmail from "utils/validate-email";
 
@@ -39,15 +43,7 @@ const AuthForm = ({ header }: AuthFormProps) => {
   };
 
   return (
-    <Container
-      sx={{
-        borderRadius: "12px",
-        boxShadow: 10,
-        padding: "24px",
-        maxWidth: "320px",
-      }}
-      maxWidth={false}
-    >
+    <Card>
       <Box
         sx={{
           display: "flex",
@@ -57,7 +53,6 @@ const AuthForm = ({ header }: AuthFormProps) => {
         <Container disableGutters>
           <img src={Logo} alt="logo" className={styles.logo} />
         </Container>
-
         <Typography variant="h3" align="left" style={{ fontSize: "36px" }}>
           {header}
         </Typography>
@@ -72,6 +67,7 @@ const AuthForm = ({ header }: AuthFormProps) => {
                 borderRadius: "12px",
               },
             }}
+            size="small"
             required
             fullWidth
             label="Email or Phone"
@@ -94,6 +90,7 @@ const AuthForm = ({ header }: AuthFormProps) => {
                 borderRadius: "12px",
               },
             }}
+            size="small"
             required
             fullWidth
             name="password"
@@ -105,8 +102,32 @@ const AuthForm = ({ header }: AuthFormProps) => {
             error={passwordError ? true : false}
           />
         </Box>
+        <Stack
+          sx={{
+            marginBottom: "12px",
+          }}
+          direction="row"
+          justifyContent="space-between"
+          alignItems="center"
+        >
+          <Link className={styles.link} to="/forgot-password">
+            Forgot your password?
+          </Link>
+          <Button
+            sx={{
+              borderRadius: 4,
+              textTransform: "none",
+            }}
+            variant="contained"
+          >
+            Sign In
+          </Button>
+        </Stack>
+        <Link className={styles.link} to="signup">
+          Create an account
+        </Link>
       </Box>
-    </Container>
+    </Card>
   );
 };
 
