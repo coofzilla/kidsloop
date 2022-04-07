@@ -7,7 +7,6 @@ import Brightness7Icon from "@mui/icons-material/Brightness7";
 import MenuItem from "@mui/material/MenuItem";
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
-
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import styles from "components/Footer/Footer.module.css";
 
