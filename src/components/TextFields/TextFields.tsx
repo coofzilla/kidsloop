@@ -1,4 +1,5 @@
 import TextField from "@mui/material/TextField";
+import { KOREAN } from "consts";
 
 interface TextFieldsProps {
   language?: string;
@@ -27,6 +28,8 @@ const TextFields = ({
   passwordChangeHandler,
   passwordError,
 }: TextFieldsProps) => {
+  const isKorean = language === KOREAN;
+
   return (
     <>
       <TextField
@@ -53,7 +56,7 @@ const TextFields = ({
         required
         fullWidth
         label={
-          language === "한국어" ? "이메일 또는 전화번호" : "Email or Phone"
+          isKorean ? "이메일 또는 전화번호" : "Email or Phone"
         }
         name="email"
         autoComplete="email"
@@ -63,7 +66,7 @@ const TextFields = ({
         error={emailPhoneError ? true : false}
         helperText={
           emailPhoneError
-            ? language === "한국어"
+            ? isKorean
               ? "사용 가능한 이메일 주소를 입력해 주세요"
               : "enter a valid email or phone number"
             : ""
@@ -92,7 +95,7 @@ const TextFields = ({
         required
         fullWidth
         name="password"
-        label={language === "한국어" ? "패스워드" : "Password"}
+        label={isKorean ? "패스워드" : "Password"}
         type="password"
         autoComplete="current-password"
         value={password}
@@ -100,7 +103,7 @@ const TextFields = ({
         error={passwordError ? true : false}
         helperText={
           passwordError
-            ? language === "한국어"
+            ? isKorean
               ? "패스워드를 입력하세요"
               : "please enter a valid password"
             : ""

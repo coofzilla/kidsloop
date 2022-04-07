@@ -35,24 +35,29 @@ const useAuthHandlers = () => {
 
   const onSignInHandler = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    if (!password.length || !emailOrPhone.length) return;
+
+    if (!emailOrPhone.length) setEmailPhoneError(true);
+    if (!password.length) setPasswordError(true);
+    if (!emailOrPhone.length || !password.length) return;
     if (emailPhoneError || passwordError) return;
     setIsLoading(true);
+
     const { data } = await kidsloop.patch("/sign-in", {
       emailOrPhone,
       password,
     });
     setIsLoading(false);
     console.log(`Welcome, ${data.name}`);
-    //uncomment when dashboard exists
-    // navigate("/dashboard");
   };
 
   const onSignUpHandler = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    if (!password.length || !emailOrPhone.length) return;
+    if (!emailOrPhone.length) setEmailPhoneError(true);
+    if (!password.length) setPasswordError(true);
+    if (!emailOrPhone.length || !password.length) return;
     if (emailPhoneError || passwordError) return;
     setIsLoading(true);
+
     const { data } = await kidsloop.patch("/sign-up", {
       emailOrPhone,
       password,
@@ -64,7 +69,7 @@ const useAuthHandlers = () => {
 
   const onForgotHandler = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    if (!emailOrPhone.length) return;
+    if (!emailOrPhone.length) return setEmailPhoneError(true);
     if (emailPhoneError) return;
     setIsLoading(true);
     const { data } = await kidsloop.patch("/reset-password", {

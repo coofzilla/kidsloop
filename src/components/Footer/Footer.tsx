@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { KOREAN, ENGLISH } from "consts";
 import LanguageContext from "contexts/LanguageContext";
 import IconButton from "@mui/material/IconButton";
 import Link from "@mui/material/Link";
@@ -17,7 +18,7 @@ interface FooterProps {
 
 const Footer = ({ switchTheme, theme }: FooterProps) => {
   const { language, onLanguageChange } = useContext(LanguageContext);
-
+  const isKorean = language === KOREAN;
   const handleChange = (e: SelectChangeEvent) => {
     //fixed bug f/not being defined
     if (onLanguageChange) onLanguageChange(e.target.value as string);
@@ -44,7 +45,7 @@ const Footer = ({ switchTheme, theme }: FooterProps) => {
             color: "var(--secondary)",
           }}
         >
-          {language === "한국어" ? "언어 선택" : "Select Language"}
+          {isKorean ? "언어 선택" : "Select Language"}
         </InputLabel>
         <Select
           IconComponent={() => null}
@@ -54,9 +55,8 @@ const Footer = ({ switchTheme, theme }: FooterProps) => {
           label="Select Language"
           onChange={handleChange}
         >
-          <MenuItem value="English">English</MenuItem>
-          <MenuItem value="한국어">한국어</MenuItem>
-          <MenuItem value=""></MenuItem>
+          <MenuItem value={ENGLISH}>{ENGLISH}</MenuItem>
+          <MenuItem value={KOREAN}>{KOREAN}</MenuItem>
         </Select>
       </FormControl>
       <Link
@@ -67,7 +67,7 @@ const Footer = ({ switchTheme, theme }: FooterProps) => {
         }}
         underline="none"
       >
-        {language === "한국어" ? "도움말" : "Help"}
+        {isKorean ? "도움말" : "Help"}
       </Link>
       <Link
         underline="none"
@@ -77,7 +77,7 @@ const Footer = ({ switchTheme, theme }: FooterProps) => {
           cursor: "pointer",
         }}
       >
-        {language === "한국어" ? "개인정보" : "Privacy"}
+        {isKorean ? "개인정보" : "Privacy"}
       </Link>
       <Link
         underline="none"
@@ -87,7 +87,7 @@ const Footer = ({ switchTheme, theme }: FooterProps) => {
           cursor: "pointer",
         }}
       >
-        {language === "한국어" ? "약관" : "Terms"}
+        {isKorean ? "약관" : "Terms"}
       </Link>
     </div>
   );

@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import { ENGLISH } from "consts";
 
 interface IContext {
   language: string;
@@ -12,7 +13,7 @@ interface LanguageStoreProps {
 }
 
 export const LanguageStore = ({ children }: LanguageStoreProps) => {
-  const [language, setLanguage] = useState({ language: "" });
+  const [language, setLanguage] = useState({ language: ENGLISH });
 
   const onLanguageChange = (language: string) => {
     setLanguage({ language });

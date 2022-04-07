@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import LanguageContext from "contexts/LanguageContext";
 import useAuthHandlers from "hooks/useAuthHandlers";
-
+import { KOREAN } from "consts";
 import { Link } from "react-router-dom";
 
 import Card from "components/AuthContainer/Card";
@@ -34,6 +34,8 @@ const ForgotPassword = ({ switchTheme, theme }: ForgotPasswordProps) => {
     isLoading,
   } = useAuthHandlers();
 
+  const isKorean = language === KOREAN;
+
   return (
     <div className="content_wrapper">
       <Card>
@@ -51,12 +53,12 @@ const ForgotPassword = ({ switchTheme, theme }: ForgotPasswordProps) => {
             align="left"
             style={{ fontSize: "24px", color: "var(--text)" }}
           >
-            {language === "한국어"
+            {isKorean
               ? "비밀번호를 잊으셨나요?"
               : "Forgot Your Password?"}
           </Typography>
           <div className={styles.forgot_password_message}>
-            {language === "한국어"
+            {isKorean
               ? "이메일이나 전화 번호를 입력하시면 암호를 재설정할 수 있는 링크를 보내드리겠습니다."
               : "Please enter your email or phone number and we will send you a link to reset your password"}
           </div>
@@ -84,7 +86,7 @@ const ForgotPassword = ({ switchTheme, theme }: ForgotPasswordProps) => {
             required
             fullWidth
             label={
-              language === "한국어" ? "이메일 또는 전화번호" : "Email or Phone"
+              isKorean ? "이메일 또는 전화번호" : "Email or Phone"
             }
             name="email"
             autoComplete="email"
@@ -95,7 +97,7 @@ const ForgotPassword = ({ switchTheme, theme }: ForgotPasswordProps) => {
             helperText={
               //nested because only want to show if error
               emailPhoneError
-                ? language === "한국어"
+                ? isKorean
                   ? "사용 가능한 이메일 주소를 입력해 주세요"
                   : "enter a valid email or phone number"
                 : ""
@@ -112,7 +114,7 @@ const ForgotPassword = ({ switchTheme, theme }: ForgotPasswordProps) => {
             alignItems="center"
           >
             <Link className={styles.link} to="/login">
-              {language === "한국어" ? "다시 로그인하기" : "Back to sign in"}
+              {isKorean ? "다시 로그인하기" : "Back to sign in"}
             </Link>
             {isLoading ? (
               <CircularProgress size={36.5} />
@@ -125,7 +127,7 @@ const ForgotPassword = ({ switchTheme, theme }: ForgotPasswordProps) => {
                 variant="contained"
                 onClick={onForgotHandler}
               >
-                {language === "한국어" ? "링크를 보내" : "Send Link"}
+                {isKorean ? "링크를 보내" : "Send Link"}
               </Button>
             )}
           </Stack>

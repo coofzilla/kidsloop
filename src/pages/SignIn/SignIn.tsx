@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import useAuthHandlers from "hooks/useAuthHandlers";
-
+import { KOREAN } from "consts/index";
 import LanguageContext from "contexts/LanguageContext";
 
 import { Link } from "react-router-dom";
@@ -38,6 +38,8 @@ const SignIn = ({ switchTheme, theme }: SignInProps) => {
     onSignInHandler,
   } = useAuthHandlers();
 
+  const isKorean = language === KOREAN;
+
   return (
     <div className="content_wrapper">
       <Card>
@@ -55,7 +57,7 @@ const SignIn = ({ switchTheme, theme }: SignInProps) => {
             align="left"
             style={{ fontSize: "36px", color: "var(--text)" }}
           >
-            {language === "한국어" ? "로그인" : "Sign In"}
+            {isKorean ? "로그인" : "Sign In"}
           </Typography>
           <Box component="form">
             <TextFields
@@ -77,9 +79,7 @@ const SignIn = ({ switchTheme, theme }: SignInProps) => {
             alignItems="center"
           >
             <Link className={styles.link} to="/forgot-password">
-              {language === "한국어"
-                ? "비밀번호를 잊으셨나요?"
-                : "Forgot your password?"}
+              {isKorean ? "비밀번호를 잊으셨나요?" : "Forgot your password?"}
             </Link>
             {isLoading ? (
               <CircularProgress size={36.5} />
@@ -92,12 +92,12 @@ const SignIn = ({ switchTheme, theme }: SignInProps) => {
                 variant="contained"
                 onClick={onSignInHandler}
               >
-                {language === "한국어" ? "로그인" : "Sign In"}
+                {isKorean ? "로그인" : "Sign In"}
               </Button>
             )}
           </Stack>
           <Link className={styles.link} to="/signup">
-            {language === "한국어" ? "가입하기" : "Create an account"}
+            {isKorean ? "가입하기" : "Create an account"}
           </Link>
         </Box>
       </Card>

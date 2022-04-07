@@ -1,4 +1,4 @@
-import { getAllByText, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 
 import SignIn from "pages/SignIn/SignIn";
@@ -8,4 +8,10 @@ test("should show sign in form", () => {
 
   const signin = screen.getAllByText("Sign In");
   expect(signin).toHaveLength(2);
+});
+
+test("cannot signin with invalid credentials", () => {
+  render(<SignIn switchTheme={() => {}} theme="" />, { wrapper: MemoryRouter });
+
+  
 });
