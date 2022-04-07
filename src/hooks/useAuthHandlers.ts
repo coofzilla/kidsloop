@@ -64,7 +64,7 @@ const useAuthHandlers = () => {
     });
     setIsLoading(false);
     console.log(data.id);
-    navigate("/login");
+    navigate("/");
   };
 
   const onForgotHandler = async (e: { preventDefault: () => void }) => {
@@ -77,7 +77,7 @@ const useAuthHandlers = () => {
     });
     setIsLoading(false);
     console.log(data.actionCompleted);
-    navigate("/login");
+    navigate("/");
   };
 
   return {

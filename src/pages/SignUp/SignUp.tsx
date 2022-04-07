@@ -78,7 +78,7 @@ const SignUp = ({ switchTheme, theme }: SignUpProps) => {
             justifyContent="space-between"
             alignItems="center"
           >
-            <Link className={styles.link} to="/login">
+            <Link className={styles.link} to="/">
               {isKorean
                 ? "이미 사용중인 계정있나요?"
                 : "Already have an account?"}

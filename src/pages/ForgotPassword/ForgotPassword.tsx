@@ -113,7 +113,7 @@ const ForgotPassword = ({ switchTheme, theme }: ForgotPasswordProps) => {
             justifyContent="space-between"
             alignItems="center"
           >
-            <Link className={styles.link} to="/login">
+            <Link className={styles.link} to="/">
               {isKorean ? "다시 로그인하기" : "Back to sign in"}
             </Link>
             {isLoading ? (

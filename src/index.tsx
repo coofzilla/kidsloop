@@ -22,7 +22,7 @@ const Root = () => {
       <Routes>
         <Route path="/" element={<App theme={theme} />}>
           <Route
-            path="login"
+            index
             element={<SignIn switchTheme={switchTheme} theme={theme} />}
           />
           <Route
