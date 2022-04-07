@@ -74,6 +74,8 @@ const ForgotPassword = ({ switchTheme, theme }: ForgotPasswordProps) => {
               },
               "& .MuiInputLabel-root": {
                 color: "var(--labelText)",
+                fontSize: "12px",
+                paddingTop: "2px",
               },
             }}
             InputProps={{

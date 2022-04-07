@@ -1,4 +1,5 @@
 import TextField from "@mui/material/TextField";
+
 import { KOREAN } from "consts";
 
 interface TextFieldsProps {
@@ -44,6 +45,8 @@ const TextFields = ({
           },
           "& .MuiInputLabel-root": {
             color: "var(--labelText)",
+            fontSize: "12px",
+            paddingTop: "2px",
           },
         }}
         InputProps={{
@@ -82,6 +85,8 @@ const TextFields = ({
           },
           "& .MuiInputLabel-root": {
             color: "var(--labelText)",
+            fontSize: "12px",
+            paddingTop: "2px",
           },
         }}
         InputProps={{
