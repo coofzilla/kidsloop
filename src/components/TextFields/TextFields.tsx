@@ -52,7 +52,6 @@ const TextFields = ({
         InputProps={{
           style: {
             borderRadius: "12px",
-            color: "red",
           },
         }}
         size="small"
@@ -83,7 +82,7 @@ const TextFields = ({
             borderColor: "var(--inputBorder)",
           },
           "& .MuiInputLabel-root": {
-            color: "var(--labelText)",
+            color: passwordError ? "#d32f2f" : "var(--labelText)",
             fontSize: "12px",
             paddingTop: "2px",
           },
@@ -98,7 +97,6 @@ const TextFields = ({
         fullWidth
         name="password"
         label={isKorean ? "패스워드" : "Password"}
-        type="password"
         autoComplete="current-password"
         value={password}
         onChange={passwordChangeHandler}
