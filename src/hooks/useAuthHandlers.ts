@@ -1,6 +1,6 @@
 import { useState, SetStateAction } from "react";
 import { useNavigate } from "react-router-dom";
-import kidsloop from "api/kidsloop";
+import kidsloop from "api/loopInstance";
 
 import isPhoneNumber from "utils/validate-number";
 import isEmail from "utils/validate-email";
