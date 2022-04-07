@@ -6,7 +6,6 @@ import Link from "@mui/material/Link";
 import Brightness3Icon from "@mui/icons-material/Brightness3";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
 import MenuItem from "@mui/material/MenuItem";
-import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import styles from "components/Footer/Footer.module.css";
@@ -43,16 +42,6 @@ const Footer = ({ switchTheme, theme }: FooterProps) => {
         }}
         size="small"
       >
-        {/* <InputLabel
-          id="language"
-          sx={{
-            fontSize: "12px",
-            color: "var(--secondary)",
-            paddingTop: "2px",
-          }}
-        >
-          {isKorean ? "언어 선택" : "Select Language"}
-        </InputLabel> */}
         <Select
           IconComponent={() => null}
           labelId="language"
