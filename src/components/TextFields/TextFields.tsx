@@ -55,9 +55,7 @@ const TextFields = ({
         size="small"
         required
         fullWidth
-        label={
-          isKorean ? "이메일 또는 전화번호" : "Email or Phone"
-        }
+        label={isKorean ? "이메일 또는 전화번호" : "Email or Phone"}
         name="email"
         autoComplete="email"
         autoFocus

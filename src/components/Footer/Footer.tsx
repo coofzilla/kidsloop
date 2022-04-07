@@ -33,25 +33,34 @@ const Footer = ({ switchTheme, theme }: FooterProps) => {
         sx={{
           width: "125px",
           "& .MuiOutlinedInput-notchedOutline": {
-            borderColor: "var(--inputBorder)",
+            // borderColor: "var(--inputBorder)",
+            border: "none",
           },
         }}
         size="small"
       >
-        <InputLabel
+        {/* <InputLabel
           id="language"
           sx={{
             fontSize: "12px",
             color: "var(--secondary)",
+            paddingTop: "2px",
           }}
         >
           {isKorean ? "언어 선택" : "Select Language"}
-        </InputLabel>
+        </InputLabel> */}
         <Select
           IconComponent={() => null}
           labelId="language"
           value={language}
-          sx={{ color: "var(--text)" }}
+          sx={{
+            color: "var(--secondary)",
+            fontSize: "12px",
+            "& .MuiSelect-select": {
+              paddingLeft: "0px",
+              marginRight: "20px",
+            },
+          }}
           label="Select Language"
           onChange={handleChange}
         >
