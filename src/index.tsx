@@ -1,7 +1,7 @@
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from "components/App";
-import AuthForm from "components/AuthForms/SignIn";
+import AuthForm from "pages/SignIn";
 import useLocalStorage from "use-local-storage";
 
 const Root = () => {

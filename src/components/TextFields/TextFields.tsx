@@ -63,15 +63,16 @@ const TextFields = ({
       />
       <TextField
         sx={{
+          marginTop: "12px",
           marginBottom: "12px",
+          "& .MuiOutlinedInput-input": {
+            color: "var(--text)",
+          },
           "& .MuiOutlinedInput-notchedOutline": {
             borderColor: "var(--inputBorder)",
           },
           "& .MuiInputLabel-root": {
             color: "var(--labelText)",
-          },
-          "& .MuiOutlinedInput-input": {
-            color: "var(--text)",
           },
         }}
         InputProps={{
@@ -90,7 +91,7 @@ const TextFields = ({
         onChange={passwordChangeHandler}
         error={passwordError ? true : false}
         helperText={
-         passwordError
+          passwordError
             ? language === "한국어"
               ? "패스워드를 입력하세요"
               : "please enter a valid password"
