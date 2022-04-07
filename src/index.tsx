@@ -1,9 +1,10 @@
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import useLocalStorage from "use-local-storage";
 import App from "components/App";
 import SignIn from "pages/SignIn/SignIn";
 import SignUp from "pages/SignUp/SignUp";
-import useLocalStorage from "use-local-storage";
+import ForgotPassword from "pages/ForgotPassword/ForgotPassword";
 
 const Root = () => {
   const defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -27,6 +28,10 @@ const Root = () => {
           <Route
             path="signup"
             element={<SignUp switchTheme={switchTheme} theme={theme} />}
+          />
+          <Route
+            path="forgot-password"
+            element={<ForgotPassword switchTheme={switchTheme} theme={theme} />}
           />
         </Route>
       </Routes>

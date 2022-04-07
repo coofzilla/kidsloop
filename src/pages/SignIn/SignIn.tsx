@@ -18,6 +18,7 @@ import { CircularProgress } from "@mui/material";
 
 import Logo from "kidsloop_min_logo.svg";
 import styles from "pages/SignIn/SignIn.module.css";
+import "styles.css";
 
 interface SignInProps {
   switchTheme: () => void;
@@ -38,7 +39,7 @@ const SignIn = ({ switchTheme, theme }: SignInProps) => {
   } = useAuthHandlers();
 
   return (
-    <div className={styles.content_wrapper}>
+    <div className="content_wrapper">
       <Card>
         <Box
           sx={{
@@ -47,7 +48,7 @@ const SignIn = ({ switchTheme, theme }: SignInProps) => {
           }}
         >
           <Container disableGutters>
-            <img src={Logo} alt="logo" className={styles.logo} />
+            <img src={Logo} alt="logo" className="logo" />
           </Container>
           <Typography
             variant="h3"

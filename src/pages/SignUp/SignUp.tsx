@@ -1,7 +1,6 @@
 import { useContext } from "react";
-import useAuthHandlers from "hooks/useAuthHandlers";
-
 import LanguageContext from "contexts/LanguageContext";
+import useAuthHandlers from "hooks/useAuthHandlers";
 
 import { Link } from "react-router-dom";
 
@@ -17,7 +16,8 @@ import Typography from "@mui/material/Typography";
 import { CircularProgress } from "@mui/material";
 
 import Logo from "kidsloop_min_logo.svg";
-import styles from "pages/SignIn/SignIn.module.css";
+import styles from "pages/SignUp/SignUp.module.css";
+import "styles.css";
 
 interface SignUpProps {
   switchTheme: () => void;
@@ -38,7 +38,7 @@ const SignUp = ({ switchTheme, theme }: SignUpProps) => {
   } = useAuthHandlers();
 
   return (
-    <div className={styles.content_wrapper}>
+    <div className="content_wrapper">
       <Card>
         <Box
           sx={{
@@ -47,7 +47,7 @@ const SignUp = ({ switchTheme, theme }: SignUpProps) => {
           }}
         >
           <Container disableGutters>
-            <img src={Logo} alt="logo" className={styles.logo} />
+            <img src={Logo} alt="logo" className="logo" />
           </Container>
           <Typography
             variant="h3"

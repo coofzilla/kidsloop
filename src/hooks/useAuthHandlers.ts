@@ -62,6 +62,19 @@ const useAuthHandlers = () => {
     navigate("/login");
   };
 
+  const onForgotHandler = async (e: any) => {
+    e.preventDefault();
+    if (!emailOrPhone.length) return;
+    if (emailPhoneError) return;
+    setIsLoading(true);
+    const { data } = await kidsloop.patch("/reset-password", {
+      emailOrPhone,
+    });
+    setIsLoading(false);
+    console.log(data.actionCompleted);
+    navigate("/login");
+  };
+
   return {
     emailChangeHandler,
     passwordChangeHandler,
@@ -72,6 +85,7 @@ const useAuthHandlers = () => {
     isLoading,
     onSignInHandler,
     onSignUpHandler,
+    onForgotHandler,
   };
 };
 
