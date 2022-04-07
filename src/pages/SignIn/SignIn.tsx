@@ -1,18 +1,23 @@
 import { useContext } from "react";
+import useAuthHandlers from "hooks/useAuthHandlers";
+
 import LanguageContext from "contexts/LanguageContext";
+
 import { Link } from "react-router-dom";
+
+import Card from "components/AuthContainer/Card";
 import Footer from "components/Footer/Footer";
+import TextFields from "components/TextFields/TextFields";
+
 import { Container } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
-import Card from "components/AuthContainer/Card";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { CircularProgress } from "@mui/material";
+
 import Logo from "kidsloop_min_logo.svg";
 import styles from "pages/SignIn/SignIn.module.css";
-import TextFields from "components/TextFields/TextFields";
-import useAuthHandlers from "hooks/useAuthHandlers";
 
 interface SignInProps {
   switchTheme: () => void;
@@ -29,7 +34,7 @@ const SignIn = ({ switchTheme, theme }: SignInProps) => {
     emailPhoneError,
     passwordError,
     isLoading,
-    onSubmitHandler,
+    onSignInHandler,
   ] = useAuthHandlers();
 
   return (
@@ -84,13 +89,13 @@ const SignIn = ({ switchTheme, theme }: SignInProps) => {
                   textTransform: "none",
                 }}
                 variant="contained"
-                onClick={onSubmitHandler}
+                onClick={onSignInHandler}
               >
                 {language === "한국어" ? "로그인" : "Sign In"}
               </Button>
             )}
           </Stack>
-          <Link className={styles.link} to="signup">
+          <Link className={styles.link} to="/signup">
             {language === "한국어" ? "가입하기" : "Create an account"}
           </Link>
         </Box>

@@ -31,7 +31,7 @@ const useAuthHandlers = () => {
 
   const [isLoading, setIsLoading] = useState(false);
 
-  const onSubmitHandler = async (e: any) => {
+  const onSignInHandler = async (e: any) => {
     e.preventDefault();
     if (!password.length || !emailOrPhone.length) return;
     if (emailPhoneError || passwordError) return;
@@ -52,7 +52,7 @@ const useAuthHandlers = () => {
     emailPhoneError,
     passwordError,
     isLoading,
-    onSubmitHandler,
+    onSignInHandler,
   ] as const;
 };
 

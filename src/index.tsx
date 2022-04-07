@@ -1,7 +1,8 @@
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from "components/App";
-import AuthForm from "pages/SignIn/SignIn";
+import SignIn from "pages/SignIn/SignIn";
+import SignUp from "pages/SignUp/SignUp";
 import useLocalStorage from "use-local-storage";
 
 const Root = () => {
@@ -21,8 +22,9 @@ const Root = () => {
         <Route path="/" element={<App theme={theme} />}>
           <Route
             path="login"
-            element={<AuthForm switchTheme={switchTheme} theme={theme} />}
+            element={<SignIn switchTheme={switchTheme} theme={theme} />}
           />
+          <Route path="signup" element={<SignUp />} />
         </Route>
       </Routes>
     </BrowserRouter>
