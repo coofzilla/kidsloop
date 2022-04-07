@@ -88,7 +88,7 @@ const SignIn = ({ switchTheme, theme }: SignInProps) => {
                 sx={{
                   borderRadius: "14px",
                   textTransform: "none",
-                  padding: "5px 20px",
+                  padding: "5px 25px",
                 }}
                 variant="contained"
                 onClick={onSignInHandler}

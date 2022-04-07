@@ -121,7 +121,7 @@ const ForgotPassword = ({ switchTheme, theme }: ForgotPasswordProps) => {
                 sx={{
                   borderRadius: "14px",
                   textTransform: "none",
-                  padding: "5px 20px",
+                  padding: "5px 25px",
                 }}
                 variant="contained"
                 onClick={onForgotHandler}

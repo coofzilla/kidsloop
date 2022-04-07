@@ -3,7 +3,7 @@ import { KOREAN, ENGLISH } from "consts";
 import LanguageContext from "contexts/LanguageContext";
 import IconButton from "@mui/material/IconButton";
 import Link from "@mui/material/Link";
-import Brightness4Icon from "@mui/icons-material/Brightness4";
+import Brightness3Icon from "@mui/icons-material/Brightness3";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
 import MenuItem from "@mui/material/MenuItem";
 import InputLabel from "@mui/material/InputLabel";
@@ -26,7 +26,11 @@ const Footer = ({ switchTheme, theme }: FooterProps) => {
   return (
     <div className={styles.footer}>
       <IconButton onClick={switchTheme}>
-        {theme === "dark" ? <Brightness7Icon /> : <Brightness4Icon />}
+        {theme === "dark" ? (
+          <Brightness7Icon sx={{ color: "var(--secondary)" }} />
+        ) : (
+          <Brightness3Icon sx={{ color: "var(--secondary)" }} />
+        )}
       </IconButton>
 
       <FormControl

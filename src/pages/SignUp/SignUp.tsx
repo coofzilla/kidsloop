@@ -90,7 +90,7 @@ const SignUp = ({ switchTheme, theme }: SignUpProps) => {
                 sx={{
                   borderRadius: "14px",
                   textTransform: "none",
-                  padding: "5px 20px",
+                  padding: "5px 25px",
                 }}
                 variant="contained"
                 onClick={onSignUpHandler}
