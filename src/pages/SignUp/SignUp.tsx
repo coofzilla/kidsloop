@@ -16,7 +16,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { CircularProgress } from "@mui/material";
 
-import Logo from "kidsloop_min_logo.svg";
+import Logo from "assets/kidsloop_min_logo.svg";
 import styles from "pages/SignUp/SignUp.module.css";
 import "styles.css";
 

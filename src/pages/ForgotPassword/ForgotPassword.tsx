@@ -15,7 +15,7 @@ import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import { CircularProgress } from "@mui/material";
 
-import Logo from "kidsloop_min_logo.svg";
+import Logo from "assets/kidsloop_min_logo.svg";
 import styles from "pages/ForgotPassword/ForgotPassword.module.css";
 import "styles.css";
 

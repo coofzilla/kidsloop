@@ -25,7 +25,7 @@ const Footer = ({ switchTheme, theme }: FooterProps) => {
   };
   return (
     <div className={styles.footer}>
-      <IconButton onClick={switchTheme}>
+      <IconButton onClick={switchTheme} sx={{ paddingLeft: "0px" }}>
         {theme === "dark" ? (
           <Brightness7Icon sx={{ color: "var(--secondary)" }} />
         ) : (
@@ -54,7 +54,7 @@ const Footer = ({ switchTheme, theme }: FooterProps) => {
           {isKorean ? "언어 선택" : "Select Language"}
         </InputLabel> */}
         <Select
-          //   IconComponent={() => null}
+          IconComponent={() => null}
           labelId="language"
           value={language}
           sx={{
