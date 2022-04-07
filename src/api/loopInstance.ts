@@ -1,5 +1,7 @@
 import axios from "axios";
 
-export default axios.create({
+const loopInstance = axios.create({
   baseURL: " https://my-json-server.typicode.com/kidsloop-test/accounts",
 });
+
+export default loopInstance;
