@@ -75,7 +75,6 @@ const TextFields = ({
       />
       <TextField
         sx={{
-          marginTop: "12px",
           marginBottom: "12px",
           "& .MuiOutlinedInput-input": {
             color: "var(--text)",

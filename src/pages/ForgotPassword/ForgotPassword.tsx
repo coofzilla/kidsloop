@@ -53,9 +53,7 @@ const ForgotPassword = ({ switchTheme, theme }: ForgotPasswordProps) => {
             align="left"
             style={{ fontSize: "24px", color: "var(--text)" }}
           >
-            {isKorean
-              ? "비밀번호를 잊으셨나요?"
-              : "Forgot Your Password?"}
+            {isKorean ? "비밀번호를 잊으셨나요?" : "Forgot Your Password?"}
           </Typography>
           <div className={styles.forgot_password_message}>
             {isKorean
@@ -87,9 +85,7 @@ const ForgotPassword = ({ switchTheme, theme }: ForgotPasswordProps) => {
             size="small"
             required
             fullWidth
-            label={
-              isKorean ? "이메일 또는 전화번호" : "Email or Phone"
-            }
+            label={isKorean ? "이메일 또는 전화번호" : "Email or Phone"}
             name="email"
             autoComplete="email"
             autoFocus
@@ -125,6 +121,7 @@ const ForgotPassword = ({ switchTheme, theme }: ForgotPasswordProps) => {
                 sx={{
                   borderRadius: "14px",
                   textTransform: "none",
+                  padding: "5px 20px",
                 }}
                 variant="contained"
                 onClick={onForgotHandler}
