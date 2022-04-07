@@ -10,16 +10,16 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { CircularProgress } from "@mui/material";
 import Logo from "kidsloop_min_logo.svg";
-import styles from "pages/SignIn.module.css";
+import styles from "pages/SignIn/SignIn.module.css";
 import TextFields from "components/TextFields/TextFields";
 import useAuthHandlers from "hooks/useAuthHandlers";
 
-interface AuthFormProps {
+interface SignInProps {
   switchTheme: () => void;
   theme: string;
 }
 
-const AuthForm = ({ switchTheme, theme }: AuthFormProps) => {
+const SignIn = ({ switchTheme, theme }: SignInProps) => {
   const { language } = useContext(LanguageContext);
   const [
     emailChangeHandler,
@@ -100,4 +100,4 @@ const AuthForm = ({ switchTheme, theme }: AuthFormProps) => {
   );
 };
 
-export default AuthForm;
+export default SignIn;
