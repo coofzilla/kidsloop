@@ -77,7 +77,7 @@ const SignUp = ({ switchTheme, theme }: SignUpProps) => {
           >
             <Link className={styles.link} to="/login">
               {language === "한국어"
-                ? "비밀번호를 잊으셨나요?"
+                ? "이미 사용중인 계정있나요?"
                 : "Already have an account?"}
             </Link>
             {isLoading ? (
