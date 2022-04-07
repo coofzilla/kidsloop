@@ -1,4 +1,5 @@
 import { useState, SetStateAction } from "react";
+import { useNavigate } from "react-router-dom";
 import kidsloop from "api/kidsloop";
 
 import isPhoneNumber from "utils/validate-number";
@@ -9,6 +10,7 @@ const useAuthHandlers = () => {
   const [password, setPassword] = useState("");
   const [emailPhoneError, setEmailPhoneError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
+  const navigate = useNavigate();
 
   const emailChangeHandler = (e: {
     target: { value: SetStateAction<string> };
@@ -42,6 +44,22 @@ const useAuthHandlers = () => {
     });
     setIsLoading(false);
     console.log(`Welcome, ${data.name}`);
+    //uncomment when dashboard exists
+    // navigate("/dashboard");
+  };
+
+  const onSignUpHandler = async (e: any) => {
+    e.preventDefault();
+    if (!password.length || !emailOrPhone.length) return;
+    if (emailPhoneError || passwordError) return;
+    setIsLoading(true);
+    const { data } = await kidsloop.patch("/sign-up", {
+      emailOrPhone,
+      password,
+    });
+    setIsLoading(false);
+    console.log(data.id);
+    navigate("/login");
   };
 
   return [
@@ -53,6 +71,7 @@ const useAuthHandlers = () => {
     passwordError,
     isLoading,
     onSignInHandler,
+    onSignUpHandler,
   ] as const;
 };
 

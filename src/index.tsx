@@ -24,7 +24,10 @@ const Root = () => {
             path="login"
             element={<SignIn switchTheme={switchTheme} theme={theme} />}
           />
-          <Route path="signup" element={<SignUp />} />
+          <Route
+            path="signup"
+            element={<SignUp switchTheme={switchTheme} theme={theme} />}
+          />
         </Route>
       </Routes>
     </BrowserRouter>
