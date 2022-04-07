@@ -1,6 +1,11 @@
 import { createContext, useState } from "react";
 
-const Context = createContext<any>("");
+interface IContext {
+  language: string;
+  onLanguageChange: (language: string) => void;
+}
+
+const Context = createContext<Partial<IContext>>({});
 
 interface LanguageStoreProps {
   children: React.ReactNode;

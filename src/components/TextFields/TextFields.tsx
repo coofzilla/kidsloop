@@ -1,13 +1,21 @@
 import TextField from "@mui/material/TextField";
 
 interface TextFieldsProps {
-  language: string;
-  emailOrPhone: any;
-  emailChangeHandler: any;
-  emailPhoneError: any;
-  password: any;
-  passwordChangeHandler: any;
-  passwordError: any;
+  language?: string;
+  emailOrPhone: string;
+  emailChangeHandler: (e: {
+    target: {
+      value: React.SetStateAction<string>;
+    };
+  }) => void;
+  emailPhoneError: boolean;
+  password: string;
+  passwordChangeHandler: (e: {
+    target: {
+      value: React.SetStateAction<string>;
+    };
+  }) => void;
+  passwordError: boolean;
 }
 
 const TextFields = ({

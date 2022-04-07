@@ -33,7 +33,7 @@ const useAuthHandlers = () => {
 
   const [isLoading, setIsLoading] = useState(false);
 
-  const onSignInHandler = async (e: any) => {
+  const onSignInHandler = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     if (!password.length || !emailOrPhone.length) return;
     if (emailPhoneError || passwordError) return;
@@ -48,7 +48,7 @@ const useAuthHandlers = () => {
     // navigate("/dashboard");
   };
 
-  const onSignUpHandler = async (e: any) => {
+  const onSignUpHandler = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     if (!password.length || !emailOrPhone.length) return;
     if (emailPhoneError || passwordError) return;
@@ -62,7 +62,7 @@ const useAuthHandlers = () => {
     navigate("/login");
   };
 
-  const onForgotHandler = async (e: any) => {
+  const onForgotHandler = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     if (!emailOrPhone.length) return;
     if (emailPhoneError) return;

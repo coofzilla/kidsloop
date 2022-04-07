@@ -2,7 +2,11 @@ import { Outlet } from "react-router-dom";
 import Container from "@mui/material/Container";
 import { LanguageStore } from "contexts/LanguageContext";
 
-const App = ({ theme }: any) => {
+interface AppProps {
+  theme: string;
+}
+
+const App = ({ theme }: AppProps) => {
   return (
     <Container
       data-theme={theme}

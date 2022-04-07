@@ -12,15 +12,16 @@ import Select, { SelectChangeEvent } from "@mui/material/Select";
 import styles from "components/Footer/Footer.module.css";
 
 interface FooterProps {
-  switchTheme: any;
-  theme: any;
+  switchTheme: () => void;
+  theme: string;
 }
 
 const Footer = ({ switchTheme, theme }: FooterProps) => {
   const { language, onLanguageChange } = useContext(LanguageContext);
 
   const handleChange = (e: SelectChangeEvent) => {
-    onLanguageChange(e.target.value as string);
+    //fixed bug f/not being defined
+    if (onLanguageChange) onLanguageChange(e.target.value as string);
   };
   return (
     <div className={styles.footer}>
