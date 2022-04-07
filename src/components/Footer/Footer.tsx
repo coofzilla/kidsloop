@@ -54,7 +54,7 @@ const Footer = ({ switchTheme, theme }: FooterProps) => {
           {isKorean ? "언어 선택" : "Select Language"}
         </InputLabel> */}
         <Select
-          IconComponent={() => null}
+          //   IconComponent={() => null}
           labelId="language"
           value={language}
           sx={{
@@ -62,7 +62,6 @@ const Footer = ({ switchTheme, theme }: FooterProps) => {
             fontSize: "12px",
             "& .MuiSelect-select": {
               paddingLeft: "0px",
-              marginRight: "20px",
             },
           }}
           label="Select Language"

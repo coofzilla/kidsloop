@@ -16,6 +16,7 @@ const App = ({ theme }: AppProps) => {
         minWidth: "100vw",
         display: "flex",
         flexDirection: "column",
+        justifyContent: "center",
       }}
     >
       <LanguageStore>
