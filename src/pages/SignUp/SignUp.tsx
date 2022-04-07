@@ -88,7 +88,7 @@ const SignUp = ({ switchTheme, theme }: SignUpProps) => {
             ) : (
               <Button
                 sx={{
-                  borderRadius: "12px",
+                  borderRadius: "14px",
                   textTransform: "none",
                 }}
                 variant="contained"
