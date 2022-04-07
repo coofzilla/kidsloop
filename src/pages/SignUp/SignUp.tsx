@@ -26,7 +26,7 @@ interface SignUpProps {
 
 const SignUp = ({ switchTheme, theme }: SignUpProps) => {
   const { language } = useContext(LanguageContext);
-  const [
+  const {
     emailChangeHandler,
     passwordChangeHandler,
     emailOrPhone,
@@ -34,10 +34,8 @@ const SignUp = ({ switchTheme, theme }: SignUpProps) => {
     emailPhoneError,
     passwordError,
     isLoading,
-    //onSignIn unused but results in bug due to order w/as const
-    onSignInHandler,
     onSignUpHandler,
-  ] = useAuthHandlers();
+  } = useAuthHandlers();
 
   return (
     <div className={styles.content_wrapper}>

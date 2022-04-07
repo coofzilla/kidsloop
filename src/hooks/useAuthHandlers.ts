@@ -62,7 +62,7 @@ const useAuthHandlers = () => {
     navigate("/login");
   };
 
-  return [
+  return {
     emailChangeHandler,
     passwordChangeHandler,
     emailOrPhone,
@@ -72,7 +72,7 @@ const useAuthHandlers = () => {
     isLoading,
     onSignInHandler,
     onSignUpHandler,
-  ] as const;
+  };
 };
 
 export default useAuthHandlers;

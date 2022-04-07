@@ -26,7 +26,7 @@ interface SignInProps {
 
 const SignIn = ({ switchTheme, theme }: SignInProps) => {
   const { language } = useContext(LanguageContext);
-  const [
+  const {
     emailChangeHandler,
     passwordChangeHandler,
     emailOrPhone,
@@ -35,7 +35,7 @@ const SignIn = ({ switchTheme, theme }: SignInProps) => {
     passwordError,
     isLoading,
     onSignInHandler,
-  ] = useAuthHandlers();
+  } = useAuthHandlers();
 
   return (
     <div className={styles.content_wrapper}>
