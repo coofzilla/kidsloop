@@ -12,6 +12,4 @@ test("should show sign in form", () => {
 
 test("cannot signin with invalid credentials", () => {
   render(<SignIn switchTheme={() => {}} theme="" />, { wrapper: MemoryRouter });
-
-  
 });
